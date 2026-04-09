@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новая запись | PractDayAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-dark">
+    <div class="container max-1100">
+        
+        <header class="form-header">
+            <a href="diary.html" class="back-link">←</a>
+            <div class="header-titles">
+                <h1>Создание записи в дневнике</h1>
+                <p class="subtitle">Зафиксируйте ваши достижения за сегодня</p>
+            </div>
+        </header>
+
+        <form id="diaryForm" class="form-layout">
+            
+            <div class="main-column">
+                <div class="glass-card">
+                    
+                    <div class="form-row-2">
+                        <div class="input-group">
+                            <label class="cyber-label">ДАТА ПРАКТИКИ</label>
+                            <input type="date" required id="entryDate" class="cyber-input">
+                        </div>
+                        <div class="input-group">
+                            <label class="cyber-label">КОЛИЧЕСТВО ЧАСОВ</label>
+                            <input type="number" value="8" min="1" max="24" id="hours" class="cyber-input">
+                        </div>
+                    </div>
+
+                    <div class="input-group mt-20">
+                        <label class="cyber-label">ЗАГОЛОВОК АКТИВНОСТИ</label>
+                        <input type="text" placeholder="Например: Разработка макета главной страницы" required id="title" class="cyber-input">
+                    </div>
+
+                    <div class="input-group mt-20">
+                        <label class="cyber-label">СОДЕРЖАНИЕ РАБОТ</label>
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn"><b>B</b></button>
+                            <button type="button" class="editor-btn"><i>I</i></button>
+                            <button type="button" class="editor-btn">List</button>
+                        </div>
+                        <textarea class="cyber-textarea" placeholder="Опишите, что именно вы делали сегодня..."></textarea>
+                    </div>
+
+                    <div class="input-group mt-25">
+                        <label class="cyber-label">ПРИКРЕПЛЕННЫЕ ФАЙЛЫ (Опционально)</label>
+                        <div class="file-upload-zone">
+                            <span class="upload-icon">📎</span>
+                            <p class="upload-title">Перетащите файлы сюда или нажмите для выбора</p>
+                            <p class="upload-subtitle">PDF, JPG, PNG или DOCX (до 10 МБ)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions mt-20">
+                    <button type="submit" class="btn-neon-cyan flex-2">Отправить на проверку</button>
+                    <button type="button" class="btn-ghost flex-1">Сохранить черновик</button>
+                </div>
+            </div>
+
+            <aside class="side-column">
+                
+                <div class="tip-card">
+                    <h4>💡 Советы по заполнению</h4>
+                    <ul>
+                        <li>Будьте конкретны в описании задач.</li>
+                        <li>Указывайте инструменты, которые использовали (например, Figma, Python).</li>
+                        <li>Если были трудности, опишите, как вы их решили.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card mb-20 p-20">
+                    <h4 class="card-mini-title">История правок</h4>
+                    <div class="history-log">
+                        <p>Черновик создан: сегодня 10:45</p>
+                        <p>Последнее сохранение: сегодня 11:20</p>
+                    </div>
+                </div>
+
+                <div class="glass-card glow-magenta ai-promo-card">
+                    <div class="ai-badge">AI Assistant</div>
+                    <h4>Нейро-генератор</h4>
+                    <p>Напишите тезисы, а ИИ превратит их в красивый и профессиональный отчет.</p>
+                    <button type="button" class="btn-neon-magenta w-100 mt-15">Сгенерировать текст</button>
+                </div>
+            </aside>
+        </form>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

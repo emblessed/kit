@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка дневника | Partner</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/partner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="partner-bg">
+    <div class="container py-40" style="max-width: 1100px;">
+        
+        <header class="partner-header-vertical mb-30">
+            <nav class="nav-top">
+                <a href="students.html" class="back-link-styled">
+                    <span class="icon">←</span> 
+                    <span class="text">К списку студентов</span>
+                </a>
+            </nav>
+            <div class="header-main-row">
+                <div class="title-group">
+                    <h1 class="page-title">Дневник практики</h1>
+                    <p class="subtitle">Студент: <span class="text-primary-bold">Александр Петров</span> | Проверка записей</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="diary-layout">
+            <main class="diary-feed">
+                
+                <div class="card diary-card border-success">
+                    <div class="diary-card-header">
+                        <div class="date-badge">02 АПРЕЛЯ 2026</div>
+                        <span class="status-tag tag-success">ПРИНЯТО</span>
+                    </div>
+                    <h3 class="entry-title">Развертывание Docker-контейнеров</h3>
+                    <p class="entry-text">
+                        Сегодня занимался настройкой окружения для нового микросервиса. Написал Dockerfile, настроил volumes для базы данных и проверил сборку через docker-compose.
+                    </p>
+                    <div class="diary-actions-row">
+                        <button class="btn-diary-secondary" onclick="toggleComment(this)">Добавить комментарий</button>
+                        <button class="btn-diary-link">Изменить статус</button>
+                    </div>
+
+                    <div class="comment-drawer">
+                        <div class="comment-input-group">
+                            <textarea placeholder="Ваше замечание студенту..." class="form-control-partner"></textarea>
+                            <button class="btn-partner-send">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card diary-card border-warning">
+                    <div class="diary-card-header">
+                        <div class="date-badge">01 АПРЕЛЯ 2026</div>
+                        <span class="status-tag tag-warning">НА ПРОВЕРКЕ</span>
+                    </div>
+                    <h3 class="entry-title">Оптимизация SQL-запросов</h3>
+                    <p class="entry-text">
+                        Анализировал медленные запросы в модуле отчетов. Добавил индексы на внешние ключи, что ускорило выборку данных в 3 раза.
+                    </p>
+                    <div class="diary-actions-row mt-20">
+                        <button class="btn-action-approve">ПРИНЯТЬ</button>
+                        <button class="btn-action-reject">ОТКЛОНИТЬ</button>
+                        <button class="btn-diary-secondary" onclick="toggleComment(this)">ЗАМЕЧАНИЕ</button>
+                    </div>
+                    <div class="comment-drawer">
+                        <textarea placeholder="Почему запись отклонена?" class="form-control mt-10"></textarea>
+                    </div>
+                </div>
+
+            </main>
+
+            <aside class="diary-sidebar">
+                <div class="card sticky-summary shadow-sm">
+                    <h3 class="sidebar-title">Итоги проверки</h3>
+                    <div class="summary-stats">
+                        <div class="stat-line">
+                            <span>Всего записей</span>
+                            <span class="stat-count">24</span>
+                        </div>
+                        <div class="stat-line text-success">
+                            <span>Одобрено</span>
+                            <span class="stat-count">18</span>
+                        </div>
+                        <div class="stat-line text-warning">
+                            <span>Ожидают</span>
+                            <span class="stat-count">6</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-actions mt-25">
+                        <button class="btn-partner-main w-100">ПОДПИСАТЬ ВСЕ</button>
+                        <p class="sidebar-note">
+                            Студент получит уведомление в Telegram сразу после вашего решения.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        function toggleComment(btn) {
+            const drawer = btn.closest('.diary-card').querySelector('.comment-drawer');
+            drawer.classList.toggle('open');
+        }
+    </script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

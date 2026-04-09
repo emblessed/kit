@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление практики | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-40" style="max-width: 900px;">
+        
+        <header class="form-header">
+            <a href="practices.html" class="back-link">← Назад к списку</a>
+            <h1>Новое место практики</h1>
+            <p class="text-light">Заполните данные для публикации позиции в системе</p>
+        </header>
+
+        <form class="card shadow-lg p-40">
+            <h3 class="form-section-title">Основная информация</h3>
+            
+            <div class="input-group">
+                <label class="label-caps">НАЗВАНИЕ ВАКАНСИИ / ПОЗИЦИИ</label>
+                <input type="text" class="form-control" placeholder="Например: Младший веб-разработчик" required>
+            </div>
+
+            <div class="form-grid-2 mt-20">
+                <div class="input-group">
+                    <label class="label-caps">КОМПАНИЯ-ПАРТНЕР</label>
+                    <select class="form-control select-custom">
+                        <option>Выберите компанию...</option>
+                        <option>ООО "Айти-Инновации"</option>
+                        <option>Яндекс</option>
+                        <option>СберТех</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="label-caps">КОЛИЧЕСТВО МЕСТ</label>
+                    <input type="number" class="form-control" value="1" min="1">
+                </div>
+            </div>
+
+            <div class="form-grid-2 mt-20">
+                <div class="input-group">
+                    <label class="label-caps">ДАТА НАЧАЛА</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="input-group">
+                    <label class="label-caps">ДАТА ОКОНЧАНИЯ</label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+
+            <h3 class="form-section-title mt-40">Требования и Описание</h3>
+
+            <div class="input-group">
+                <label class="label-caps">НЕОБХОДИМЫЕ НАВЫКИ (СТЕК)</label>
+                <div class="tag-input-wrapper">
+                    <div class="tag">JavaScript <span class="tag-close">×</span></div>
+                    <div class="tag">HTML/CSS <span class="tag-close">×</span></div>
+                    <div class="tag">Git <span class="tag-close">×</span></div>
+                    <input type="text" placeholder="Добавить навык..." class="tag-field">
+                </div>
+            </div>
+
+            <div class="input-group mt-20">
+                <label class="label-caps">ОПИСАНИЕ ЗАДАЧ</label>
+                <textarea class="form-control textarea-custom" placeholder="Опишите, чем будет заниматься студент..."></textarea>
+            </div>
+
+            <div class="form-actions mt-40">
+                <button type="submit" class="btn-primary">ОПУБЛИКОВАТЬ ВАКАНСИЮ</button>
+                <button type="button" class="btn-secondary">СОХРАНИТЬ В ЧЕРНОВИК</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

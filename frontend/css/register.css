@@ -1,0 +1,132 @@
+/* Страница центрируется через Flexbox */
+.auth-page {
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-card {
+    padding: 40px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: var(--text-light);
+}
+
+/* Селектор ролей */
+.role-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.role-option {
+    border: 2px solid #f1f5f9;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.role-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.role-option:hover {
+    border-color: var(--primary);
+    background: #f5f7ff;
+}
+
+.role-option.active {
+    border-color: var(--primary);
+    background: #f5f7ff;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.role-icon {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.role-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* Чекбокс */
+.checkbox-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.checkbox-group input {
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+/* Ссылка внизу */
+.auth-footer-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95rem;
+}
+
+.auth-footer-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-page-footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 400px) {
+    .auth-card {
+        padding: 25px 20px;
+    }
+    
+    .role-selector {
+        grid-template-columns: 1fr; /* Роли встают друг под друга */
+    }
+}

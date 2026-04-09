@@ -1,0 +1,89 @@
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --accent: #a855f7;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --glass: rgba(255, 255, 255, 0.9);
+    --border: rgba(226, 232, 240, 0.8);
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --container-width: 1100px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.gps-indicator-dark.status-error { border-left: 4px solid #ff4d4d; background: rgba(255, 77, 77, 0.1); }
+
+/* Глобальный контейнер */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Базовые карточки */
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* Кнопки */
+.btn-primary, .btn-secondary, .btn-white {
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    color: var(--text);
+}
+
+.btn-white {
+    background: white;
+    color: var(--primary);
+}
+
+.btn-primary:hover, .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Поля ввода (переиспользуемый компонент) */
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-light); }
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #f1f5f9;
+    background: #f8fafc;
+    transition: 0.3s;
+}
+.input-group input:focus { border-color: var(--primary); outline: none; background: white; }

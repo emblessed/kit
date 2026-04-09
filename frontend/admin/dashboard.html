@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>PractDay <span>AI</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="active">📊 Дашборд</a>
+                <a href="users.html">👥 Пользователи</a>
+                <a href="practices.html">🏢 Практики</a>
+                <a href="reports.html">📈 Отчеты</a>
+                
+                <div class="sidebar-system">
+                    <p class="system-title">СИСТЕМА</p>
+                    <a href="#" class="system-link">Настройки</a>
+                    <a href="#" onclick="auth.logout()" class="system-link logout"> Выход</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            
+            <header class="content-header">
+                <div>
+                    <h1>Системная сводка</h1>
+                    <p>Обзор ключевых показателей платформы</p>
+                </div>
+                <div class="date-badge">
+                    📅 <span id="currentDate">03 Апреля, 2026</span>
+                </div>
+            </header>
+
+            <section class="stat-grid">
+                <div class="card stat-card">
+                    <p class="stat-title">СТУДЕНТОВ</p>
+                    <h2 class="stat-value">1,240</h2>
+                    <div class="stat-trend trend-up">↑ 12% за месяц</div>
+                </div>
+                
+                <div class="card stat-card">
+                    <p class="stat-title">ПАРТНЕРОВ</p>
+                    <h2 class="stat-value">86</h2>
+                    <div class="stat-trend trend-up">↑ 4 новые компании</div>
+                </div>
+                
+                <div class="card stat-card">
+                    <p class="stat-title">АКТИВНЫХ ПРАКТИК</p>
+                    <h2 class="stat-value">312</h2>
+                    <div class="stat-trend trend-neutral">85% заполняемость</div>
+                </div>
+                
+                <div class="card stat-card">
+                    <p class="stat-title">ОШИБКИ API</p>
+                    <h2 class="stat-value text-danger">0</h2>
+                    <div class="stat-trend trend-good">Статус: OK</div>
+                </div>
+            </section>
+
+            <div class="dashboard-grid">
+                
+                <div class="card">
+                    <h3 class="card-title">Последние события</h3>
+                    <ul class="activity-feed">
+                        <li class="activity-item">
+                            <div class="icon-circle" style="background: #e0f2fe; color: #0ea5e9;">👤</div>
+                            <div class="activity-content">
+                                <strong>Новый пользователь:</strong> Студент Михаил Р. зарегистрировался.
+                                <small>5 минут назад</small>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="icon-circle" style="background: #fef9c3; color: #ca8a04;">🏢</div>
+                            <div class="activity-content">
+                                <strong>Заявка на партнерство:</strong> ООО "ДатаСофт" ожидает модерации.
+                                <small>12 минут назад</small>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="icon-circle" style="background: #dcfce7; color: #166534;">✅</div>
+                            <div class="activity-content">
+                                <strong>Отчет сформирован:</strong> Недельная выгрузка для деканата ФИТ.
+                                <small>1 час назад</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Состояние системы</h3>
+                    
+                    <div class="progress-group">
+                        <div class="progress-header">
+                            <span>Загрузка сервера</span>
+                            <span>42%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 42%; background: #10b981;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-group">
+                        <div class="progress-header">
+                            <span>Место в облаке (S3)</span>
+                            <span>1.2 / 5 TB</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 24%; background: var(--primary);"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary w-100" style="margin-top: 25px;">ОБСЛУЖИВАНИЕ</button>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

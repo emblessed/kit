@@ -1,0 +1,744 @@
+
+
+/* --- Переменные для Партнера --- */
+:root {
+    --partner-primary: #6366f1; /* Indigo */
+    --partner-primary-dark: #4f46e5;
+    --partner-bg: #f8fafc;
+    --partner-text: #1e293b;
+    --partner-text-light: #64748b;
+    --partner-border: #e2e8f0;
+    --warning: #f59e0b;
+    --success: #10b981;
+}
+
+.partner-bg {
+    background-color: var(--partner-bg);
+    color: var(--partner-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Шапка */
+.partner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Контейнер шапки */
+.partner-header-vertical {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Стилизация ссылки "Назад" */
+.nav-top {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-link-styled {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--partner-text-light);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    margin-left: -12px; /* Выравнивание текста по сетке */
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.back-link-styled .icon {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+/* Эффект при наведении */
+.back-link-styled:hover {
+    color: var(--partner-primary);
+    background: #eff6ff;
+}
+
+.back-link-styled:hover .icon {
+    transform: translateX(-4px);
+}
+
+/* Основная строка заголовка */
+.header-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--partner-border);
+    padding-bottom: 20px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--partner-text);
+}
+
+.subtitle {
+    margin: 5px 0 0;
+    color: var(--partner-text-light);
+    font-size: 0.95rem;
+}
+
+.partner-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--partner-text);
+}
+
+.partner-logo span {
+    color: var(--partner-primary);
+}
+
+.company-name {
+    color: var(--partner-text-light);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.mini-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.btn-logout {
+    background: white;
+    border: 1px solid var(--partner-border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+/* Сетка статистики */
+.stat-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 30px;
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--partner-text-light);
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 10px 0;
+    color: var(--partner-text);
+}
+
+.stat-trend {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.trend-up { color: var(--success); }
+
+.stat-sub { color: var(--partner-text-light); font-size: 0.85rem; }
+
+.stat-link {
+    color: var(--partner-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Основная сетка */
+.partner-main-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Элементы активности */
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--partner-border);
+    transition: background 0.2s;
+}
+
+.activity-item:last-child { border-bottom: none; }
+
+.activity-item:hover { background: #f8fafc; }
+
+.activity-icon {
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.activity-content { flex: 1; }
+
+.activity-content p { margin: 0; font-size: 0.95rem; }
+
+.activity-content small { color: var(--partner-text-light); }
+
+.activity-time {
+    font-size: 0.75rem;
+    color: var(--partner-text-light);
+    font-weight: 600;
+}
+
+/* Инструменты */
+.tool-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tool-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.btn-primary-partner {
+    background: var(--partner-primary);
+    color: white;
+    border: none;
+}
+
+.btn-primary-partner:hover { background: var(--partner-primary-dark); }
+
+.btn-outline-partner {
+    background: white;
+    color: var(--partner-primary);
+    border: 2px solid var(--partner-primary);
+}
+
+.btn-outline-partner:hover { background: #f5f3ff; }
+
+.btn-muted {
+    background: #64748b;
+    color: white;
+    border: none;
+}
+
+
+/* --- Стили для страницы Отзыва --- */
+
+.student-info-badge {
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 1px solid var(--partner-border);
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.student-info-badge .separator {
+    margin: 0 10px;
+    color: var(--partner-border);
+}
+
+.section-title-bordered {
+    border-left: 4px solid var(--partner-primary);
+    padding-left: 15px;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Кнопки рейтинга */
+.rating-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.rating-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid var(--partner-border);
+    background: white;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--partner-text-light);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rating-btn:hover {
+    border-color: var(--partner-primary);
+    color: var(--partner-primary);
+    background: #f5f3ff;
+}
+
+.rating-btn.active {
+    background: var(--partner-primary);
+    color: white;
+    border-color: var(--partner-primary);
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Текстовые поля */
+.textarea-review { min-height: 160px; }
+.textarea-sm { min-height: 100px; }
+
+/* Кастомный чекбокс */
+.recommendation-box {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px dashed var(--partner-border);
+    transition: all 0.3s;
+}
+
+.recommendation-box:has(input:checked) {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    border-style: solid;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Кнопки в футере */
+.form-actions-row {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-partner-main {
+    flex: 2;
+    background: var(--partner-primary);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-partner-main:hover {
+    background: var(--partner-primary-dark);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+.btn-partner-ghost {
+    flex: 1;
+    background: white;
+    color: var(--partner-text-light);
+    border: 2px solid var(--partner-border);
+    padding: 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-partner-ghost:hover {
+    background: #f1f5f9;
+}
+
+.form-footer-note {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--partner-text-light);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+
+/* --- Стили Посещаемости --- */
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.mb-30 { margin-bottom: 30px; }
+.stack-gap-15 { display: flex; flex-direction: column; gap: 15px; }
+
+.badge-pill {
+    background: var(--partner-primary);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.attendance-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    transition: transform 0.2s;
+}
+
+.active-request:hover {
+    transform: scale(1.01);
+}
+
+.student-avatar-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.attendance-info { flex: 1; }
+.student-name { margin: 0; font-size: 1.05rem; }
+.attendance-details { margin: 4px 0 0; font-size: 0.85rem; color: var(--partner-text-light); }
+
+/* Индикаторы */
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.status-dot.green { background: #10b981; }
+.status-dot.orange { background: #f59e0b; }
+
+/* Кнопки действий */
+.attendance-actions { display: flex; gap: 10px; }
+
+.btn-action {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.btn-action.approve { background: #dcfce7; color: #15803d; }
+.btn-action.approve:hover { background: #10b981; color: white; }
+
+.btn-action.decline { background: #fee2e2; color: #b91c1c; }
+.btn-action.decline:hover { background: #ef4444; color: white; }
+
+/* Состояние подтверждено */
+.confirmed-row { opacity: 0.7; background: #f8fafc; }
+.status-text-confirmed {
+    font-weight: 800;
+    color: #10b981;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Мини-статистика внизу */
+.stats-mini-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px;
+}
+
+.stat-mini-item { text-align: center; }
+.stat-divider { width: 1px; height: 40px; background: var(--partner-border); }
+.text-success { color: #10b981; }
+.text-error { color: #ef4444; }
+.center-actions{
+    padding: 12px;
+}
+
+.btn-secondary-partner {
+    background: white;
+    border: 1px solid var(--partner-border);
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: var(--partner-text);
+    cursor: pointer;
+}
+
+/* --- Сетка дневника --- */
+.diary-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Карточки дневника */
+.diary-card {
+    margin-bottom: 25px;
+    border-left: 6px solid #e2e8f0;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.diary-card.border-success { border-left-color: var(--success); }
+.diary-card.border-warning { border-left-color: var(--warning); }
+.diary-card.border-error { border-left-color: #ef4444; }
+
+.diary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.date-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--partner-text-light);
+    letter-spacing: 0.5px;
+}
+
+.entry-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--partner-text);
+}
+
+.entry-text {
+    line-height: 1.6;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* Статус-теги */
+.status-tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.tag-success { background: #dcfce7; color: #166534; }
+.tag-warning { background: #fef9c3; color: #854d0e; }
+
+/* Кнопки действий внутри записи */
+.diary-actions-row {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-action-approve {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-action-reject {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-diary-secondary {
+    background: white;
+    border: 1px solid var(--partner-border);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-diary-link {
+    background: none;
+    border: 1px solid var(--partner-border);
+    color: var(--partner-text-light);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-diary-link:hover {
+    background: #f1f5f9;
+    color: var(--partner-text);
+    border-color: #cbd5e1;
+}
+
+/* Группа ввода комментария */
+.comment-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+/* Стилизация текстового поля */
+.form-control-partner {
+    flex: 1;
+    min-height: 40px;
+    max-height: 120px;
+    padding: 12px 15px;
+    border: 2px solid #f1f5f9;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-control-partner:focus {
+    border-color: var(--partner-primary);
+    background: #fff;
+}
+
+/* Кнопка "Отправить" */
+.btn-partner-send {
+    background: var(--partner-primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-partner-send:hover {
+    background: var(--partner-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.btn-partner-send:active {
+    transform: translateY(0);
+}
+
+/* Выпадающий комментарий */
+.comment-drawer {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--partner-border);
+}
+
+.comment-drawer.open {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+/* Сайдбар */
+.sticky-summary {
+    position: sticky;
+    top: 30px;
+    padding: 25px;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--partner-bg);
+    font-weight: 600;
+}
+
+.stat-count { font-weight: 800; }
+
+.sidebar-note {
+    font-size: 0.75rem;
+    color: var(--partner-text-light);
+    margin-top: 15px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.text-primary-bold { color: var(--partner-primary); font-weight: 800; }
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Утилиты */
+.pb-50 { padding-bottom: 50px; }
+.overflow-hidden { overflow: hidden; }
+.p-0 { padding: 0; }
+.text-warning { color: var(--warning); }

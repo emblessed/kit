@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление практиками | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>PractDay <span>AI</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html">📊 Дашборд</a>
+                <a href="users.html">👥 Пользователи</a>
+                <a href="practices.html" class="active">🏢 Практики</a>
+                <a href="reports.html">📈 Отчеты</a>
+                
+                <div class="sidebar-system">
+                    <p class="system-title">СИСТЕМА</p>
+                    <a href="#" class="system-link">Настройки</a>
+                    <a href="#" onclick="auth.logout()" class="system-link logout">Выход</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <header class="content-header">
+                <div>
+                    <h1>Реестр практик</h1>
+                    <p>Управление активными и архивными местами практики</p>
+                </div>
+                <button class="btn-primary" onclick="location.href='practice-form.html'">+ Добавить место</button>
+            </header>
+
+            <div class="card filter-card">
+                <div class="filter-wrapper">
+                    <div class="search-input">
+                        <input type="text" placeholder="Поиск по компании или направлению...">
+                    </div>
+                    <select class="filter-select">
+                        <option>Все отрасли</option>
+                        <option>IT & Разработка</option>
+                        <option>Маркетинг</option>
+                        <option>Дизайн</option>
+                    </select>
+                    <button class="btn-secondary filter-btn">Фильтры</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="practice-table">
+                    <thead>
+                        <tr>
+                            <th>КОМПАНИЯ / НАПРАВЛЕНИЕ</th>
+                            <th>МЕСТ</th>
+                            <th>ПЕРИОД</th>
+                            <th>СТАТУС</th>
+                            <th class="text-right">ДЕЙСТВИЯ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-avatar" style="background: #EEF2FF; color: var(--primary);">G</div>
+                                    <div>
+                                        <strong>Global Tech Solutions</strong>
+                                        <small>Frontend Developer (React)</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><strong>5 / 10</strong></td>
+                            <td>01.06 — 31.08</td>
+                            <td><span class="status-pill status-open">Набор открыт</span></td>
+                            <td class="text-right">
+                                <button class="action-btn">Изменить</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-avatar" style="background: #FFF7ED; color: #EA580C;">D</div>
+                                    <div>
+                                        <strong>Design Studio "Artix"</strong>
+                                        <small>UI/UX Designer</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><strong>2 / 2</strong></td>
+                            <td>15.05 — 15.07</td>
+                            <td><span class="status-pill status-closed">Мест нет</span></td>
+                            <td class="text-right">
+                                <button class="action-btn">Изменить</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card import-card">
+                <p>Хотите импортировать список из Excel?</p>
+                <button class="btn-white">Загрузить таблицу .xlsx</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

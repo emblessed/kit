@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение посещаемости | Partner</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/partner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="partner-bg">
+    <div class="container py-40" style="max-width: 800px;">
+        
+        <header class="partner-header-vertical">
+            <nav class="nav-top">
+                <a href="dashboard.html" class="back-link-styled">
+                    <span class="icon">←</span> 
+                    <span class="text">Вернуться в панель управления</span>
+                </a>
+            </nav>
+
+            <div class="header-main-row flex-between">
+                <div class="title-group">
+                    <h1 class="page-title">Запросы на отметку</h1>
+                    <p class="subtitle">Управление посещаемостью студентов в реальном времени</p>
+                </div>
+                <div class="header-badge">
+                    <span id="requestCounter" class="badge-pill pulse">0 запросов</span>
+                </div>
+            </div>
+        </header>
+
+        <div id="attendanceList" class="stack-gap-15">
+            <div class="card p-20 text-center">
+                <p class="subtitle">Загрузка данных о посещаемости...</p>
+            </div>
+        </div>
+
+        <div class="center-actions mt-30">
+            <button id="approveAllBtn" class="btn-secondary-partner w-auto">Подтвердить всех за сегодня</button>
+        </div>
+
+        <section class="mt-50">
+            <h3 class="section-title">Статистика отдела</h3>
+            <div class="card stats-mini-row mt-15">
+                <div class="stat-mini-item">
+                    <p class="label-caps">ВОВРЕМЯ</p>
+                    <h2 class="text-success">92%</h2>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-mini-item">
+                    <p class="label-caps">ОПОЗДАНИЯ</p>
+                    <h2 class="text-error">8%</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/partner-attendance.js"></script>
+</body>
+</html>

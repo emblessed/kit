@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Smart Attendance | PractDay AI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-dark">
+
+    <section class="attendance-hero-dark">
+        <div class="container">
+            <div class="attendance-header">
+                <h1>Presence Control</h1>
+                <div class="attendance-stats">
+                    <div class="stat-glass">
+                        <span class="stat-value" id="totalAttendance">24</span>
+                        <small>Дней</small>
+                    </div>
+                    <div class="stat-glass">
+                        <span class="stat-value" id="totalHours">144</span>
+                        <small>Часов</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container attendance-main">
+        <div class="tabs-cyber">
+            <button class="tab-btn active" data-type="offline">📍 GPS Отметка</button>
+            <button class="tab-btn" data-type="online">💻 Онлайн</button>
+        </div>
+
+        <div id="offlineTab" class="tab-content">
+            <div class="glass-card p-25">
+                <div class="practice-select-wrapper">
+                    <label class="cyber-label">ВЫБЕРИТЕ ОБЪЕКТ ПРАКТИКИ</label>
+                    <select id="practiceSelect" class="cyber-select">
+                        <option value="" disabled selected>Нажмите для выбора...</option>
+                        <option value="1" data-lat="52.2875" data-lng="76.9667">ТОО Казахмыс (Павлодар)</option>
+                        <option value="2" data-lat="52.2900" data-lng="76.9500">ТОО IT Solutions</option>
+                        <option value="3" data-lat="52.2864" data-lng="76.9809">ТОО KIT</option>
+                    </select>
+                </div>
+
+                <div id="gpsStatus" class="gps-indicator-dark status-waiting">
+                    <div class="pulse-dot"></div>
+                    <div class="gps-text">
+                        <b id="gpsTitle">Ожидание выбора</b><br>
+                        <small id="gpsSub">Система готова к сканированию GPS</small>
+                    </div>
+                </div>
+
+                <div id="map" class="cyber-map"></div>
+
+                <button id="markOfflineBtn" class="btn-neon-cyan w-100 py-20 mt-15" disabled>
+                    ПОДТВЕРДИТЬ ПРИСУТСТВИЕ
+                </button>
+            </div>
+        </div>
+
+        <div id="onlineTab" class="tab-content" style="display: none;">
+            <div class="glass-card p-25">
+                <div class="input-group">
+                    <label class="cyber-label">ССЫЛКА НА ОТЧЕТ / ЗАДАНИЕ</label>
+                    <input type="url" id="activityProof" placeholder="https://github.com/..." class="cyber-input">
+                </div>
+                <button id="markOnlineBtn" class="btn-neon-magenta w-100 py-20 mt-20">ОТПРАВИТЬ ОНЛАЙН-ОТМЕТКУ</button>
+            </div>
+        </div>
+
+        <section class="history-section mt-30">
+            <h3 class="section-title">Последние действия</h3>
+            <div class="history-list" id="historyList">
+                <div class="history-item-glass">
+                    <div class="history-info">
+                        <b class="loc-name">ТОО Казахмыс</b>
+                        <span class="time-stamp">Сегодня, 09:15</span>
+                    </div>
+                    <span class="badge-cyber badge-cyan">GPS Active</span>
+                </div>
+                <div class="history-item-glass">
+                    <div class="history-info">
+                        <b class="loc-name">Удаленная работа</b>
+                        <span class="time-stamp">Вчера, 14:30</span>
+                    </div>
+                    <span class="badge-cyber badge-magenta">Remote</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+    <script>
+    // 1. Инициализация карты
+const practiceSelect = document.getElementById('practiceSelect');
+const gpsStatus = document.getElementById('gpsStatus');
+const markBtn = document.getElementById('markOfflineBtn');
+const gpsTitle = document.getElementById('gpsTitle');
+const gpsSub = document.getElementById('gpsSub');
+
+let map = L.map('map').setView([52.2875, 76.9667], 13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+
+// Формула расчета расстояния (Гаверсинус)
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; 
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+// 2. Логика выбора объекта и проверки GPS
+practiceSelect.addEventListener('change', () => {
+    if (!navigator.geolocation) {
+        alert("Ваш браузер не поддерживает геолокацию");
+        return;
+    }
+
+    const opt = practiceSelect.options[practiceSelect.selectedIndex];
+    const targetLat = parseFloat(opt.dataset.lat);
+    const targetLng = parseFloat(opt.dataset.lng);
+
+    gpsTitle.innerText = "Сканирую GPS...";
+    gpsStatus.className = 'gps-indicator-dark status-waiting';
+    markBtn.disabled = true;
+
+    navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        const distance = calculateDistance(latitude, longitude, targetLat, targetLng);
+        
+        // Визуализация на карте
+        map.flyTo([targetLat, targetLng], 17);
+        L.circle([targetLat, targetLng], { radius: 300, color: '#00f5d4', fillOpacity: 0.1 }).addTo(map);
+        L.marker([latitude, longitude]).addTo(map).bindPopup("Вы здесь").openPopup();
+
+        // Проверка вхождения в радиус (300 метров)
+        if (distance <= 300) {
+            gpsStatus.className = 'gps-indicator-dark status-success';
+            gpsTitle.innerText = 'Вы в зоне практики';
+            gpsSub.innerText = `Дистанция: ${Math.round(distance)}м (Допустимо)`;
+            markBtn.disabled = false;
+        } else {
+            gpsStatus.className = 'gps-indicator-dark status-error'; // создайте такой стиль в CSS если нет
+            gpsTitle.innerText = 'Вне зоны объекта';
+            gpsSub.innerText = `До объекта ${Math.round(distance)}м. Подойдите ближе.`;
+            markBtn.disabled = true;
+        }
+    }, (err) => {
+        gpsTitle.innerText = "Ошибка доступа к GPS";
+        gpsSub.innerText = "Пожалуйста, разрешите доступ к местоположению";
+    });
+});
+
+// 3. ФИНАЛЬНАЯ ОТПРАВКА ДАННЫХ
+markBtn.addEventListener('click', async () => {
+    const token = localStorage.getItem('practday_token');
+    const profile = JSON.parse(localStorage.getItem('practday_profile'));
+    const opt = practiceSelect.options[practiceSelect.selectedIndex];
+
+    markBtn.innerText = "ОТПРАВКА...";
+    markBtn.disabled = true;
+
+    try {
+        const response = await fetch('http://localhost:3000/api/attendance/log', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                studentProfileId: profile._id,
+                distance: 0, // Мы уже проверили вхождение выше
+                status: 'pending'
+            })
+        });
+
+        if (response.ok) {
+            alert("✅ Присутствие успешно подтверждено! Ожидайте проверки наставником.");
+            location.reload(); // Перезагружаем для обновления истории
+        } else {
+            throw new Error("Ошибка сервера");
+        }
+    } catch (err) {
+        alert("❌ Ошибка при отправке данных");
+        markBtn.innerText = "ПОДТВЕРДИТЬ ПРИСУТСТВИЕ";
+        markBtn.disabled = false;
+    }
+});
+
+// Код табов (оставляем без изменений)
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const type = btn.dataset.type;
+        document.getElementById('offlineTab').style.display = type === 'offline' ? 'block' : 'none';
+        document.getElementById('onlineTab').style.display = type === 'online' ? 'block' : 'none';
+    });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* --- Стили для Характеристики и Документов --- */
+
+.char-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Имитация листа A4 */
+.document-a4 {
+    background: white;
+    padding: 60px 80px;
+    border-radius: 4px;
+    min-height: 842px; /* Пропорции A4 */
+    position: relative;
+    border: 1px solid var(--border);
+    font-family: "Times New Roman", Times, serif; /* Стандарт для документов */
+}
+
+.doc-header {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #1e293b;
+    padding-bottom: 20px;
+}
+
+.doc-title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.doc-subtitle {
+    color: #475569;
+    font-style: italic;
+}
+
+.doc-body {
+    line-height: 1.8;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+}
+
+.doc-list {
+    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.doc-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.doc-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+}
+
+.grade { font-weight: bold; }
+
+/* Печать и подпись */
+.doc-footer {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.stamp {
+    width: 130px;
+    height: 130px;
+    border: 3px double #1d4ed8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d4ed8;
+    font-weight: 800;
+    transform: rotate(-15deg);
+    opacity: 0.6;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 15px;
+    line-height: 1.2;
+}
+
+.sig-line {
+    width: 200px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 5px;
+}
+
+/* Боковая панель */
+.status-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.status-icon-success {
+    font-size: 1.5rem;
+}
+
+.status-text-main {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.skill-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    margin: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+@media print {
+    .no-print, .btn-print, aside {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .char-layout {
+        display: block;
+    }
+
+    .document-a4 {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+    }
+}
+
+/* Вспомогательные классы */
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.divider { margin: 20px 0; border: 0; border-top: 1px solid var(--border); }

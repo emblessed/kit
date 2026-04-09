@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник практики | PractDayAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-dark">
+    <div class="app-layout">
+        
+        <aside class="cyber-sidebar">
+            <div class="sidebar-brand">
+                PractDay<span>AI</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-emoji">🏠</span> Дашборд
+                </a>
+                <a href="diary.html" class="nav-item active">
+                    <span class="nav-emoji">📔</span> Дневник
+                </a>
+                <a href="attendance.html" class="nav-item">
+                    <span class="nav-emoji">📍</span> Посещаемость
+                </a>
+                <a href="characteristic.html" class="nav-item">
+                    <span class="nav-emoji">📜</span> Характеристика
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-pill w-100">Выйти</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-titles">
+                    <h1>Дневник практики</h1>
+                    <p class="subtitle">Ваш персональный лог выполненных работ</p>
+                </div>
+                <button class="btn-neon-cyan" onclick="location.href='diary-form.html'">
+                    + Новая запись
+                </button>
+            </header>
+
+            <div class="glass-card p-0 mb-30">
+                <div class="table-filters">
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Поиск по записям..." class="cyber-input">
+                    </div>
+                    <select class="cyber-select">
+                        <option>Все статусы</option>
+                        <option>Подписано</option>
+                        <option>Ожидает</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Содержание работ</th>
+                                <th>Часы</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="diaryTableBody">
+                            <tr>
+                                <td class="date-cell">01.04.2026</td>
+                                <td>
+                                    <div class="work-title">Изучение документации</div>
+                                    <div class="work-desc">Ознакомление с внутренними регламентами компании...</div>
+                                </td>
+                                <td class="hours-cell">8ч</td>
+                                <td><span class="status-pill status-active">ПОДПИСАНО</span></td>
+                                <td>
+                                    <button class="btn-ghost">Изменить</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">02.04.2026</td>
+                                <td>
+                                    <div class="work-title">Разработка макетов</div>
+                                    <div class="work-desc">Создание UI-кита для внутреннего проекта.</div>
+                                </td>
+                                <td class="hours-cell">8ч</td>
+                                <td><span class="status-pill status-warning">НА ПРОВЕРКЕ</span></td>
+                                <td>
+                                    <button class="btn-ghost">Изменить</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-box glow-violet">
+                    <div class="stat-info">
+                        <span class="stat-label">Всего записей</span>
+                        <span class="stat-value">24</span>
+                    </div>
+                </div>
+                <div class="stat-box glow-green">
+                    <div class="stat-info">
+                        <span class="stat-label">Часов отработано</span>
+                        <span class="stat-value text-green">192</span>
+                    </div>
+                </div>
+                <div class="stat-box glow-cyan">
+                    <div class="stat-info">
+                        <span class="stat-label">Процент заполнения</span>
+                        <span class="stat-value text-cyan">85%</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

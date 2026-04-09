@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Характеристика | PractDay AI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-dark">
+    <div class="container max-1200">
+        <header class="char-header">
+            <div class="header-info">
+                <h1>Аттестационный лист</h1>
+                <p class="subtitle">Просмотр и выгрузка финальной характеристики</p>
+            </div>
+            <button class="btn-neon-cyan" onclick="window.print()">
+                <span>PDF ВЫГРУЗКА</span>
+            </button>
+        </header>
+
+        <div class="char-grid">
+            <div class="doc-wrapper">
+                <div class="document-preview print-area">
+                    <div class="doc-header">
+                        <h2 class="doc-title">Характеристика</h2>
+                        <p class="doc-subtitle">на студента-практиканта ФГБОУ ВО "ПГУ"</p>
+                    </div>
+                    
+                    <div class="doc-body">
+                        <p>Настоящая характеристика выдана <strong>Иванову Ивану Ивановичу</strong>, обучающемуся на 3 курсе по направлению "Программная инженерия".</p>
+                        
+                        <p class="mt-20">За период прохождения практики в ООО "Айти-Инновации" с 01.02.2026 по 01.04.2026 студент проявил себя как дисциплинированный и инициативный специалист. В рамках задач практикант занимался разработкой интерфейсов на стеке HTML/CSS/JS, а также участвовал в проектировании архитектуры базы данных проекта PractDayAI.</p>
+                        
+                        <h4 class="mt-30">Результаты оценки:</h4>
+                        <ul class="doc-scores">
+                            <li>Качество выполнения работ: <span class="score">Отлично (5)</span></li>
+                            <li>Соблюдение трудовой дисциплины: <span class="score">Отлично (5)</span></li>
+                            <li>Уровень теоретической подготовки: <span class="score">Хорошо (4)</span></li>
+                        </ul>
+
+                        <p class="mt-30"><strong>Заключение руководителя:</strong> Рекомендуется к зачислению в кадровый резерв компании. Программа практики выполнена в полном объеме.</p>
+                    </div>
+
+                    <div class="doc-footer">
+                        <div class="stamp-box">
+                            <div class="stamp-circle">
+                                <span>М.П.</span>
+                                <small>ООО "АЙТИ-ИННОВАЦИИ"</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="char-sidebar">
+                <div class="glass-card status-card">
+                    <h3>Статус документа</h3>
+                    <div class="status-indicator success">
+                        <div class="status-icon">✔</div>
+                        <div class="status-text">
+                            <b>Подписано партнером</b>
+                            <span>02.04.2026, 11:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card skills-card mt-20">
+                    <h3>Ваши компетенции</h3>
+                    <div class="skills-flex">
+                        <span class="skill-tag">Frontend</span>
+                        <span class="skill-tag">UX/UI Design</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Architecture</span>
+                    </div>
+                </div>
+                
+                <div class="ai-notice mt-20">
+                    <p>Документ верифицирован смарт-контрактом PractDay AI и готов к предоставлению в учебную часть.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

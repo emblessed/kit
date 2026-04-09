@@ -1,0 +1,137 @@
+/* Шапка сайта */
+.main-header {
+    background: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Hero секция */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span { color: var(--primary); }
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* Сетка карточек */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.card-icon { font-size: 2.5rem; margin-bottom: 15px; }
+
+/* Секция "Как это работает" */
+.steps-section {
+    margin-top: 100px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+.step-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.step-number {
+    flex: 0 0 60px;
+    height: 60px;
+    background: var(--primary);
+    color: white;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    flex-shrink: 0; /* Фикс из прошлого шага */
+}
+
+.step-item .card { margin-bottom: 0; flex: 1; }
+
+/* Призыв к действию */
+.cta-block { margin-top: 80px; text-align: center; }
+.cal-to-action {
+    background: var(--primary);
+    color: white;
+    padding: 50px;
+}
+
+/* Футер */
+.main-footer {
+    margin-top: 100px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.footer-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--text-light);
+}
+
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: inherit; text-decoration: none; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .step-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin-bottom: 15px;
+    }
+    
+    .footer-wrapper {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .footer-links { justify-content: center; }
+}

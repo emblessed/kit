@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | PractDayAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="card auth-card">
+            <header class="auth-header">
+                <h2>Создать аккаунт</h2>
+                <p>Присоединяйтесь к платформе PractDayAI</p>
+            </header>
+
+            <form id="register-form" class="auth-form">
+                <div class="role-selector">
+                    <label class="role-option active">
+                        <input type="radio" name="role" value="student" checked onchange="updateRoleUI(this)">
+                        <span class="role-icon">🎓</span>
+                        <span class="role-label">Студент</span>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="role" value="partner" onchange="updateRoleUI(this)">
+                        <span class="role-icon">🏢</span>
+                        <span class="role-label">Партнер</span>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label for="full-name" id="name-label">ФАМИЛИЯ И ИМЯ</label>
+                    <input type="text" id="full-name" placeholder="Иван Иванов" required>
+                </div>
+                <div class="input-group" id="group-container">
+                    <label for="group">АКАДЕМИЧЕСКАЯ ГРУППА</label>
+                    <input type="text" id="group" placeholder="ПО-123">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">ЭЛЕКТРОННАЯ ПОЧТА</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                    <span id="email-error" style="color: #ff4d4d; font-size: 0.8rem; margin-top: 5px; display: none;">
+                        Этот email уже занят
+                    </span>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">ПАРОЛЬ</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        Я согласен с условиями использования и политикой обработки персональных данных
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+
+                <div class="auth-footer-link">
+                    Уже есть аккаунт? <a href="login.html">Войти</a>
+                </div>
+            </form>
+        </div>
+        
+        <footer class="auth-page-footer">
+            &copy; 2026 PractDayAI. Все права защищены.
+        </footer>
+    </div>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
+
+
+

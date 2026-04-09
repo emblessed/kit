@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчеты и Аналитика | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>PractDay <span>AI</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html">📊 Дашборд</a>
+                <a href="users.html">👥 Пользователи</a>
+                <a href="practices.html">🏢 Практики</a>
+                <a href="reports.html" class="active">📈 Отчеты</a>
+                
+                <div class="sidebar-system">
+                    <p class="system-title">СИСТЕМА</p>
+                    <a href="#" class="system-link">Настройки</a>
+                    <a href="#" onclick="auth.logout()" class="system-link logout">Выход</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            
+            <header class="content-header">
+                <div>
+                    <h1>Аналитическая отчетность</h1>
+                    <p>Формирование сводных данных по учебным практикам</p>
+                </div>
+            </header>
+
+            <div class="reports-grid">
+                
+                <div class="card">
+                    <h3 class="card-title">Активность посещений</h3>
+                    <div class="chart-box">
+                        <div class="bar" style="height: 40%;" data-value="40%"></div>
+                        <div class="bar" style="height: 70%;" data-value="70%"></div>
+                        <div class="bar" style="height: 55%;" data-value="55%"></div>
+                        <div class="bar" style="height: 90%;" data-value="90%"></div>
+                        <div class="bar" style="height: 65%;" data-value="65%"></div>
+                        <div class="bar" style="height: 80%;" data-value="80%"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Быстрый экспорт</h3>
+                    
+                    <div class="export-item">
+                        <div class="export-info">
+                            <strong>Общий отчет по студентам</strong>
+                            <p>Все роли, посещаемость, оценки</p>
+                        </div>
+                        <button class="btn-primary btn-sm">PDF</button>
+                    </div>
+                    
+                    <div class="export-item">
+                        <div class="export-info">
+                            <strong>Список предприятий-партнеров</strong>
+                            <p>Контакты, кол-во мест, договора</p>
+                        </div>
+                        <button class="btn-primary btn-sm bg-success">XLSX</button>
+                    </div>
+                    
+                    <div class="export-item">
+                        <div class="export-info">
+                            <strong>Архив дневников за семестр</strong>
+                            <p>Все записи, прошедшие модерацию</p>
+                        </div>
+                        <button class="btn-primary btn-sm bg-indigo">ZIP</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <h3 class="card-title">Последние сгенерированные документы</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Название документа</th>
+                                <th>Дата создания</th>
+                                <th>Инициатор</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ведомость_гр_201.pdf</strong></td>
+                                <td>02.04.2026, 14:20</td>
+                                <td>Система (Auto)</td>
+                                <td><span class="text-success font-bold">Готов</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Отчет_по_партнерам_Q1.xlsx</strong></td>
+                                <td>01.04.2026, 09:45</td>
+                                <td>admin@test.com</td>
+                                <td><span class="text-success font-bold">Готов</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert-box alert-warning">
+                <h4>⚠️ Уведомление системы</h4>
+                <p>
+                    Автоматическая генерация еженедельных отчетов настроена на каждое воскресенье в 23:59. 
+                    Все отчеты сохраняются в облачном хранилище и доступны в течение 12 месяцев. 
+                    Для настройки рассылки на Email перейдите в раздел глобальных конфигураций.
+                </p>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+</body>
+</html>

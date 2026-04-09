@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход | PractDayAI Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+
+    <div class="card login-card">
+        <header class="login-header">
+            <h1>PractDay<span>AI</span></h1>
+            <p>Тестовый доступ к фронтенду</p>
+        </header>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" placeholder="demo@example.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">ПАРОЛЬ</label>
+                <input type="password" id="password" value="123456" required>
+            </div>
+
+            <div class="forgot-password-wrapper">
+                <a href="forgot-password.html">Забыли пароль?</a>
+            </div>
+            
+            <button type="submit" class="btn-primary">ВОЙТИ</button>
+        </form>
+
+        <div class="guest-panel">
+            <div class="guest-grid">
+                <button type="button" id="guest-btn" class="btn-secondary">Войти как гость</button>
+            </div>
+        </div>
+
+        <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+
+        <div class="demo-panel">
+            <div class="demo-title">Быстрый вход (Демо)</div>
+            <div class="demo-grid">
+                <button class="demo-btn" onclick="quickLogin('admin@admin.com', 'Администратор')">
+                    <span>ADMIN</span> admin@admin.com
+                </button>
+                <button class="demo-btn" onclick="quickLogin('partner@it-company.ru', 'Партнер')">
+                    <span>PARTNER</span> partner@it-company.ru
+                </button>
+                <button class="demo-btn" onclick="quickLogin('student@university.edu', 'Студент')">
+                    <span>STUDENT</span> student@university.edu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script> 
+
+    <script>
+        // Функция для демо-входа
+        async function quickLogin(email, roleName) {
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = 'admin1234'; 
+            console.log('Попытка входа под ролью: ' + roleName);
+            
+            const event = { preventDefault: () => {} };
+            handleLogin(event);
+        }
+
+        // Основная функция авторизации
+        async function handleLogin(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Сохраняем данные в localStorage
+                    localStorage.setItem('practday_token', data.token);
+                    localStorage.setItem('practday_user', JSON.stringify(data.user));
+                    localStorage.setItem('practday_profile', JSON.stringify(data.profile));
+
+                    // Перенаправляем пользователя согласно роли
+                    redirectByUserRole(data.user.role);
+                } else {
+                    alert('Ошибка входа: ' + (data.error || 'Неверный логин или пароль'));
+                }
+            } catch (error) {
+                console.error('Ошибка сети:', error);
+                alert('Сервер недоступен. Проверьте, запущен ли Node.js бэкенд.');
+            }
+        }
+
+        // Вспомогательная функция редиректа
+        function redirectByUserRole(role) {
+            switch (role) {
+                case 'admin':
+                    window.location.href = 'admin/dashboard.html';
+                    break;
+                case 'partner':
+                    window.location.href = 'partner/dashboard.html';
+                    break;
+                case 'student':
+                    window.location.href = 'student/dashboard.html';
+                    break;
+                default:
+                    alert('Роль не распознана');
+            }
+        }
+
+        // Логика входа гостя
+        const guestBtn = document.getElementById('guest-btn');
+        if (guestBtn) {
+            guestBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'guest/dashboard.html';
+            });
+        }
+    </script>
+</body>
+</html>

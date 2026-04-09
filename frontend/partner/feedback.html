@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзыв о студенте | Partner</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/partner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="partner-bg pb-50">
+    <div class="container py-40" style="max-width: 900px;">
+        
+        <header class="form-header">
+            <a href="students.html" class="back-link">← Назад к списку студентов</a>
+            <h1 class="mt-15">Финальный отзыв и характеристика</h1>
+            <div class="student-info-badge">
+                <span class="label-caps">СТУДЕНТ:</span> <strong>Александр Петров</strong> 
+                <span class="separator">|</span> 
+                <span class="label-caps">ПЕРИОД:</span> 01.02 — 01.04
+            </div>
+        </header>
+
+        <div class="card p-40 shadow-sm">
+            <section class="review-section">
+                <h3 class="section-title-bordered">Оценка компетенций</h3>
+                
+                <div class="rating-item">
+                    <label class="label-caps">ТЕХНИЧЕСКИЕ НАВЫКИ (HARD SKILLS)</label>
+                    <div class="rating-row" data-group="hard">
+                        <button class="rating-btn">1</button>
+                        <button class="rating-btn">2</button>
+                        <button class="rating-btn">3</button>
+                        <button class="rating-btn">4</button>
+                        <button class="rating-btn active">5</button>
+                    </div>
+                </div>
+
+                <div class="rating-item mt-20">
+                    <label class="label-caps">ДИСЦИПЛИНА И ОТВЕТСТВЕННОСТЬ</label>
+                    <div class="rating-row" data-group="discipline">
+                        <button class="rating-btn">1</button>
+                        <button class="rating-btn">2</button>
+                        <button class="rating-btn">3</button>
+                        <button class="rating-btn">4</button>
+                        <button class="rating-btn">5</button>
+                    </div>
+                </div>
+
+                <div class="rating-item mt-20">
+                    <label class="label-caps">КОММУНИКАЦИЯ (SOFT SKILLS)</label>
+                    <div class="rating-row" data-group="soft">
+                        <button class="rating-btn">1</button>
+                        <button class="rating-btn">2</button>
+                        <button class="rating-btn">3</button>
+                        <button class="rating-btn active">4</button>
+                        <button class="rating-btn">5</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="review-section mt-40">
+                <h3 class="section-title-bordered">Подробный комментарий</h3>
+                
+                <div class="input-group">
+                    <label class="label-caps">КЛЮЧЕВЫЕ ДОСТИЖЕНИЯ И ЗАДАЧИ</label>
+                    <textarea class="form-control textarea-review" placeholder="Опишите вклад студента в проект..."></textarea>
+                </div>
+
+                <div class="input-group mt-20">
+                    <label class="label-caps">РЕКОМЕНДАЦИИ ПО РАЗВИТИЮ</label>
+                    <textarea class="form-control textarea-sm" placeholder="На чем стоит сфокусироваться?"></textarea>
+                </div>
+            </section>
+
+            <div class="recommendation-box mt-40">
+                <label class="checkbox-container">
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text">Готов(а) рекомендовать студента к трудоустройству</span>
+                </label>
+            </div>
+
+            <div class="form-actions-row mt-40">
+                <button class="btn-partner-main">ПОДПИСАТЬ И ОТПРАВИТЬ</button>
+                <button class="btn-partner-ghost">ПРЕДПРОСМОТР PDF</button>
+            </div>
+        </div>
+
+        <footer class="form-footer-note">
+            <p>Документ будет заверен усиленной квалифицированной электронной подписью:</p>
+            <strong>Константинопольский К.К. | CEO ООО "Айти-Инновации"</strong>
+        </footer>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/router.js"></script>
+    <script>
+        // Интерактив для кнопок рейтинга
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = btn.closest('.rating-row');
+                parent.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

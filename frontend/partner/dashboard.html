@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель Партнера | PractDayAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/partner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="partner-bg">
+    <div class="container py-40">
+        
+        <header class="partner-header">
+            <div class="brand-info">
+                <h1 class="partner-logo">PractDay <span>Partner</span></h1>
+                <p class="company-name">ООО "Айти-Инновации" — Кабинет куратора</p>
+            </div>
+            <div class="header-actions">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Curator+Name&background=6366f1&color=fff" alt="Avatar" class="mini-avatar">
+                    <span>Константин К.</span>
+                </div>
+                <button class="btn-logout" onclick="auth.logout()">Выход</button>
+            </div>
+        </header>
+
+
+        <div class="stat-grid-3">
+            <div class="card stat-card">
+                <p class="stat-label">СТУДЕНТОВ СЕЙЧАС</p>
+                <h2 class="stat-value">12</h2>
+                <div class="stat-trend trend-up">+2 за неделю</div>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">НУЖНО ПРОВЕРИТЬ</p>
+                <h2 class="stat-value text-warning">5</h2>
+                <div class="stat-sub">Записи в дневниках</div>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">АКТИВНЫХ ВАКАНСИЙ</p>
+                <h2 class="stat-value">3</h2>
+                <div class="stat-link">Управление местами →</div>
+            </div>
+        </div>
+
+        <div class="partner-main-grid">
+            <section class="activity-section">
+                <h3 class="section-title">Последняя активность</h3>
+                <div class="card p-0 overflow-hidden">
+                    <div class="activity-item">
+                        <div class="activity-icon">📍</div>
+                        <div class="activity-content">
+                            <p><strong>Алексей С.</strong> отметил прибытие в 08:58</p>
+                            <small>Офис "Северный"</small>
+                        </div>
+                        <span class="activity-time">Только что</span>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">📔</div>
+                        <div class="activity-content">
+                            <p><strong>Мария В.</strong> отправила дневник на проверку</p>
+                            <small>Период: 28.03 - 02.04</small>
+                        </div>
+                        <span class="activity-time">2 ч. назад</span>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <p><strong>Новый отклик</strong> на позицию "QA-инженер"</p>
+                            <small>Студент: Дмитрий К.</small>
+                        </div>
+                        <span class="activity-time">Вчера</span>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="tools-section">
+                <h3 class="section-title">Инструменты</h3>
+                <div class="card tool-stack">
+                    <button class="tool-btn btn-primary-partner" onclick="location.href='confirm-attendance.html'">
+                        📅 Журнал посещаемости
+                    </button>
+                    <button class="tool-btn btn-outline-partner" onclick="location.href='students.html'">
+                        👥 Список моих студентов
+                    </button>
+                    <button class="tool-btn btn-muted" onclick="alert('Отчет формируется...')">
+                        📊 Скачать сводный отчет
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/geo.js"></script>
+
+</body>
+</html>

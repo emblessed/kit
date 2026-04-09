@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Моя практика | PractDay AI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-dark">
+    <header class="student-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="dashboard.html" class="logo-brand">PractDay<span>AI</span></a>
+                <nav class="main-nav">
+                    <a href="dashboard.html" class="nav-link active">Обзор</a>
+                    <a href="diary.html" class="nav-link">Дневник</a>
+                    <a href="attendance.html" class="nav-link">Посещаемость</a>
+                    <button id="logoutBtn" class="logout-pill" onclick="auth.logout()">Выйти</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="content-wrapper">
+        <div class="container">
+            
+            <section class="welcome-section">
+                <div class="welcome-text">
+                    <h1 id="studentName">Привет, Александр! ⚡️</h1>
+                    <p id="studentGroup" class="group-tag">Группа: ИС-21-9к</p>
+                </div>
+                <div class="current-date">Пятница, 3 апреля 2026</div>
+            </section>
+            
+            <div class="stats-container">
+                <div class="stat-box glow-cyan">
+                    <div class="stat-icon">🕒</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalHours">72</span>
+                        <span class="stat-label">Часов отработано</span>
+                    </div>
+                </div>
+                <div class="stat-box glow-magenta">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="attendanceRate">85%</span>
+                        <span class="stat-label">Посещаемость</span>
+                    </div>
+                </div>
+                <div class="stat-box glow-violet">
+                    <div class="stat-icon">✍️</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="diaryEntries">12</span>
+                        <span class="stat-label">Записей в базе</span>
+                    </div>
+                </div>
+                <div class="stat-box glow-green">
+                    <div class="stat-icon">⭐️</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="feedbackScore">4.8</span>
+                        <span class="stat-label">Нейро-оценка</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="grid-main">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2>📌 Активная практика</h2>
+                            <span class="status-pill status-active">В процессе</span>
+                        </div>
+                        <div class="practice-details" id="activePractice">
+                            <div class="info-row"><span>Название:</span> <strong>Производственная практика</strong></div>
+                            <div class="info-row"><span>Организация:</span> <strong>ТОО Казахмыс</strong></div>
+                            <div class="info-row"><span>Формат:</span> <strong>Очно</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card mt-25">
+                        <div class="card-header">
+                            <h2>📝 Лог событий</h2>
+                            <a href="diary.html" class="view-all">Архив записей →</a>
+                        </div>
+                        <div class="timeline" id="recentEntries">
+                            <div class="timeline-item confirmed">
+                                <div class="item-content">
+                                    <strong>Изучение сварочного аппарата</strong>
+                                    <span>15.11.2024</span>
+                                </div>
+                                <span class="item-status confirmed">ПРИНЯТО</span>
+                            </div>
+                            <div class="timeline-item pending">
+                                <div class="item-content">
+                                    <strong>Работа с документацией</strong>
+                                    <span>13.11.2024</span>
+                                </div>
+                                <span class="item-status pending">В ОБРАБОТКЕ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="grid-aside">
+                    <div class="glass-card">
+                        <h3>Действия</h3>
+                        <div class="quick-actions-list">
+                            <a href="attendance.html" class="action-item">
+                                <span class="action-emoji">📍</span>
+                                <span>Отметиться в геолокации</span>
+                            </a>
+                            <a href="diary-form.html" class="action-item">
+                                <span class="action-emoji">✍️</span>
+                                <span>Сдать отчет ИИ</span>
+                            </a>
+                            <a href="choose-practice.html" class="action-item glow-cyan-text">
+                                <span class="action-emoji">💼</span>
+                                <span>Найти новую практику</span>
+                            </a>
+                            <a href="characteristic.html" class="action-item">
+                                <span class="action-emoji">📋</span>
+                                <span>Запросить характеристику</span>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="student-footer">
+        <p>© 2026 PractDay AI. Powered by Neural Networks.</p>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/geo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const profile = JSON.parse(localStorage.getItem('practday_profile'));
+    if (profile) {
+        if (document.getElementById('studentName')) {
+            document.getElementById('studentName').innerText = `Привет, ${profile.fullName || 'Студент'}! ⚡️`;
+        }
+        if (document.getElementById('studentGroup')) {
+            document.getElementById('studentGroup').innerText = `Группа: ${profile.group || 'Не указана'}`;
+        }
+    }
+});
+    </script>
+</body>
+</html>

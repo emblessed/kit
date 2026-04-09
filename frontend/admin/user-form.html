@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Характеристика | PractDayAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/user-form.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container main-container">
+        
+        <header class="page-header no-print">
+            <div>
+                <h1>Аттестационный лист</h1>
+                <p class="text-light">Просмотр и выгрузка финальной характеристики</p>
+            </div>
+            <button class="btn-primary btn-print" onclick="window.print()">
+                <span>🖨️</span> Скачать PDF
+            </button>
+        </header>
+
+        <div class="char-layout">
+            <div class="document-a4 shadow-sm">
+                <div class="doc-content">
+                    <div class="doc-header">
+                        <h2 class="doc-title">Характеристика</h2>
+                        <p class="doc-subtitle">на студента-практиканта ФГБОУ ВО "ПГУ"</p>
+                    </div>
+                    
+                    <div class="doc-body">
+                        <p>Настоящая характеристика выдана <strong>Иванову Ивану Ивановичу</strong>, обучающемуся на 3 курсе по направлению "Программная инженерия".</p>
+                        
+                        <p class="mt-20">За период прохождения практики в <strong>ООО "Айти-Инновации"</strong> с 01.02.2026 по 01.04.2026 студент проявил себя как дисциплинированный и инициативный специалист. В рамках задач практикант занимался разработкой интерфейсов на стеке HTML/CSS/JS, а также участвовал в проектировании архитектуры базы данных проекта PractDayAI.</p>
+                        
+                        <h4 class="mt-30">Результаты оценки:</h4>
+                        <ul class="doc-list">
+                            <li>Качество выполнения работ: <span class="grade">Отлично (5)</span></li>
+                            <li>Соблюдение трудовой дисциплины: <span class="grade">Отлично (5)</span></li>
+                            <li>Уровень теоретической подготовки: <span class="grade">Хорошо (4)</span></li>
+                        </ul>
+
+                        <p class="mt-30 doc-conclusion">
+                            <strong>Заключение руководителя:</strong> Рекомендуется к зачислению в кадровый резерв компании. Программа практики выполнена в полном объеме.
+                        </p>
+                    </div>
+
+                    <div class="doc-footer">
+                        <div class="stamp">
+                            <span class="stamp-inner">М.П.<br>ООО "АЙТИ-ИННОВАЦИИ"</span>
+                        </div>
+                        <div class="signature">
+                            <div class="sig-line"></div>
+                            <span class="text-xs">Подпись руководителя</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="char-sidebar no-print">
+                <div class="card status-card">
+                    <h3 class="card-title">Статус документа</h3>
+                    <div class="status-badge-container">
+                        <div class="status-icon-success">✅</div>
+                        <div>
+                            <div class="status-text-main">Подписано партнером</div>
+                            <div class="text-xs text-light">02.04.2026, 11:45</div>
+                        </div>
+                    </div>
+                    <hr class="divider">
+                    <h3 class="card-title">Ваши навыки</h3>
+                    <div class="skills-flex">
+                        <span class="skill-badge">Frontend</span>
+                        <span class="skill-badge">UX/UI Design</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">PractDay Core</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
